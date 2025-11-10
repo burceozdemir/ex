@@ -11,6 +11,9 @@ When I open he provided code in terminal there was a explanation of encrypted fl
 There were 2 integer keys (`key1`, `key2`) and a message.
 Message encrypts with an Affine cipher, defined as:
 
+<img width="1431" height="701" alt="Encryption" src="https://github.com/user-attachments/assets/f6ff8356-7e3a-4aea-939f-2b490cdcd426" />
+
+
 [E(x) = (a \cdot x + b) \bmod m]
 
 
