@@ -46,33 +46,37 @@ So, `m = 66` possible characters.
 
 We need to find the values of `a` and `b`.
 
+**Attack**
+
+* Enumerate all possible `a` (coprime with `m`).
+* Enumerate all possible `b` (from 0 to `m-1`).
+
+
 ### Writing the decryptor
 
 Below is the Python script (`RSA.py`) used to brute-force all valid `(a, b)` combinations and test each decryption:
 
 ```python
-#!/usr/bin/env python3
 from math import gcd
 
 alphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789{}><|"
 m = len(alphabet)
-idx = {ch: i for i, ch in enumerate(alphabet)}
+idx = {ch:i for i,ch in enumerate(alphabet)}
 
 ciphertext = "XL7V2sCOKWSIICsCg}W}qeWGqgWgEKkK0"
 
 def modinv(a, m):
-    return pow(a, -1, m)  # modular inverse
+    return pow(a, -1, m)
 
 def decrypt(ct, a, b):
     a_inv = modinv(a, m)
-    return ''.join(alphabet[(a_inv * (idx[ch] - b)) % m] if ch in idx else ch for ch in ct)
+    return ''.join(alphabet[(a_inv*(idx[ch]-b))%m] if ch in idx else ch for ch in ct)
 
 for a in range(1, m):
-    if gcd(a, m) != 1:
-        continue  # 'a' must be coprime with m
+    if gcd(a, m) != 1: continue
     for b in range(m):
         pt = decrypt(ciphertext, a, b)
-        if "flag{" in pt.lower():
+        if "flag{" in pt.lower() or "FLAG{" in pt:
             print(f"FOUND: a={a}, b={b} -> {pt}")
 ```
 
@@ -98,10 +102,6 @@ FOUND: a=65, b=44 -> FLAG{nice<affinity<you<got<there}
 
 The affine cipher uses a small alphabet, so the key space is limited and can be brute-forced. Only values of `a` that are coprime with `m` are valid.
 
-**Attack**
-
-* Enumerate all possible `a` (coprime with `m`).
-* Enumerate all possible `b` (from 0 to `m-1`).
 
 ---
 
