@@ -1,52 +1,52 @@
-# 🧩 Security Exercise Sheet 1 
+# Security Exercise Sheet 1
 
-## Questtion E 1.4  Breaking a cipher 
+## Question E 1.4  Breaking a cipher
 
-I need to find the hidden flag encrypted with using the provided `challenge.py` script.
+I need to find the hidden flag encrypted using the provided `challenge.py` script.
 
+### What should I do?
 
-### 🧠 Step 1 – What should I do?
-
-When I open he provided code in terminal there was a explanation of encrypted flag.
-There were 2 integer keys (`key1`, `key2`) and a message.
-Message encrypts with an Affine cipher, defined as:
+When I opened the provided code in the terminal, there was an explanation of the encrypted flag.
+There were two integer keys (`key1`, `key2`) and a message.
+The message is encrypted with an Affine cipher, defined as:
 
 <img width="1431" height="701" alt="Encryption" src="https://github.com/user-attachments/assets/f6ff8356-7e3a-4aea-939f-2b490cdcd426" />
 
+Encryption:
 
-[E(x) = (a \cdot x + b) \bmod m]
-
+$$
+E(x) = (a \cdot x + b) \bmod m
+$$
 
 * `a` = multiplicative key
 * `b` = additive key
 * `m` = size of the alphabet
 
 Decryption:
-[D(x) = a^{-1} \cdot (x - b) \bmod m ]
 
+$$
+D(x) = a^{-1} \cdot (x - b) \bmod m
+$$
 
-Given Informations:
+Given information:
 
 ```
 Output: XL7V2sCOKWSIICsCg}W}qeWGqgWgEKkK0
 ```
+
 Alphabet used:
 
 ```
 abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789{}><|
 ```
 
-Since there is a given alphabet and limited options, doing bruteforcing is a good option.
-
-
+Since an alphabet is given and the key space is limited, brute-forcing is a good option.
 
 So, `m = 66` possible characters.
 
 We need to find the values of `a` and `b`.
 
----
-
-### 💻 Step 2 – Writing the decryptor
+### Writing the decryptor
 
 Below is the Python script (`RSA.py`) used to brute-force all valid `(a, b)` combinations and test each decryption:
 
@@ -78,9 +78,9 @@ for a in range(1, m):
 
 ---
 
-### 💣 Step 3 – Running the attack
+### Brute-force attack
 
-Executed in WSL / terminal:
+Executed in WSL/terminal:
 
 ```bash (wsl)
 python3 RSA.py
@@ -94,27 +94,19 @@ FOUND: a=65, b=44 -> FLAG{nice<affinity<you<got<there}
 
 ---
 
-### 🤔 Step 4 – Explanation
+### Explanation
 
-The affine cipher uses a small alphabet, so the key space is limited and can be brute-forced. Only values of a that are coprime with m are valid.
+The affine cipher uses a small alphabet, so the key space is limited and can be brute-forced. Only values of `a` that are coprime with `m` are valid.
 
 **Attack**
 
-* Enumerate all possible `a` (coprime with `m`)
-* Enumerate all possible `b` (from 0 to `m-1`)
-
+* Enumerate all possible `a` (coprime with `m`).
+* Enumerate all possible `b` (from 0 to `m-1`).
 
 ---
 
-### 🏴 Step 5 – The Flag
-
+### The Flag
 
 ```
 FLAG{nice<affinity<you<got<there}
 ```
-
----
-
- 
-
-
