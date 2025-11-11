@@ -148,4 +148,3 @@ FLAG{l1n34r_tv_1s_d34d!}
 
 ---
 
-If you want: I can also (a) produce a `solve_bbc.py` ready-to-run script in this repository, (b) add a short diagram showing the CRT combination, or (c) convert this README to a downloadable `.md` or `.pdf`. Let me know which you prefer.
