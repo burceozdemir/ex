@@ -52,7 +52,7 @@ What I did? (Step by step)
 
 1. Download the provided `generate.py` to inspect how the challenge was generated (confirms `e = 3`, same flag used, and a simple left-padding was applied).
 
-<img width="1898" height="943" alt="photo2" src="https://github.com/user-attachments/assets/32ecec5f-0ac5-4579-bd67-4d0921466b99" />
+
 
    <img width="1918" height="945" alt="photo3" src="https://github.com/user-attachments/assets/2042e1cd-06e1-42c0-803c-89dcfcc3e20f" />
 
