@@ -1,6 +1,6 @@
 ## In question E1.6 BBC sent us a encrypted message(m). When I opened the challange link, this is our output:
 
-<img width="1753" height="822" alt="photo1" src="https://github.com/user-attachments/assets/034143f2-0a2f-4e06-82db-c237d16f5f12" />
+
 
 
 
